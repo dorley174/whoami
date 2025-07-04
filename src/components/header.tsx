@@ -1,16 +1,19 @@
 import React from 'react';
 import Link from 'next/link';
+import styles from "../css/header.module.css"
 
-const HomePage: React.FC = () => {
+const HeaderPage: React.FC = () => {
   return (
-    <main>
-      <h1>Добро пожаловать в игру Who Am I</h1>
-      <p>Это главная страница.</p>
-      <Link href="/rules">
-        Правила игры
-      </Link>
-    </main>
+    <header>
+      <nav className={styles.headernav}>
+        <Link className={styles.link} href="/">Who Am I?</Link>
+        <Link className={styles.link} href="/menu">Menu</Link>
+        <Link className={styles.link} href="/rules">Rules</Link>
+        <Link className={styles.link} href="/about">About</Link>
+        
+      </nav>
+    </header>
   );
 };
 
-export default HomePage;
+export default HeaderPage;

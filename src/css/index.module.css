@@ -5,8 +5,8 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-
-    margin: 200px auto 0     auto;
+    padding: 0 30px;
+    margin: 100px auto 100px auto;
 }
 
 .headersubtitle {
@@ -15,9 +15,11 @@
     flex-grow: 1;
     justify-content: center;
     align-items: center;
+
 }
 
 .playbutton {
+    
     border: 1px solid #8E0000;
     border-radius: 30px;
     padding: 10px 75px;
@@ -40,7 +42,8 @@
 }
 
 .playbutton:hover {
-
+    background-color: #eca500;
+    padding: 15px 80px;
 }
 
 .headerspan {

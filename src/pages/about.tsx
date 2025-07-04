@@ -2,7 +2,7 @@ import React from 'react';
 import HeaderPage from '../components/header';
 import FooterPage from '../components/footer';
 
-const MenuPage: React.FC = () => {
+const AboutPage: React.FC = () => {
   return (
     <main>
       <HeaderPage></HeaderPage>
@@ -13,4 +13,4 @@ const MenuPage: React.FC = () => {
   );
 };
 
-export default MenuPage;
+export default AboutPage;

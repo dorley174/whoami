@@ -1,10 +1,13 @@
 import React from 'react';
 import Link from 'next/link';
-import styles from "../css/styles.module.css"
+import HeaderPage from '../components/header';
+import FooterPage from '../components/footer';
+import styles from "../css/index.module.css"
 
 const HomePage: React.FC = () => {
   return (
     <main>
+      <HeaderPage></HeaderPage>
       <div className={styles.headertitle}>
         <div className={styles.headersubtitle}>
           <div className={styles.headerspan}>
@@ -21,7 +24,7 @@ const HomePage: React.FC = () => {
         </div> 
         
       </div>
-      
+      <FooterPage></FooterPage>
     </main>
   );
 };
