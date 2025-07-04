@@ -10,8 +10,15 @@
 }
 
 .l1 {
+    font-weight: 600;
+    font-size: 1.3rem;
+}
+
+.l11 {
     font-weight: 900;
     font-size: 1.3rem;
+    text-decoration: none;
+    color: #8E0000;
 }
 
 .l2 {

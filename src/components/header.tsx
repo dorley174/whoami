@@ -7,9 +7,9 @@ const HeaderPage: React.FC = () => {
     <header>
       <nav className={styles.headernav}>
         <Link className={styles.link} href="/">Who Am I?</Link>
-        <Link className={styles.link} href="/menu">Menu</Link>
+        <Link className={styles.link} href="/menu">Rooms</Link>
         <Link className={styles.link} href="/rules">Rules</Link>
-        <Link className={styles.link} href="/about">About</Link>
+        <Link className={styles.link} href="/about">FAQ</Link>
         
       </nav>
     </header>

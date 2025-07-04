@@ -11,6 +11,7 @@
 
 .headersubtitle {
     display: flex;
+    flex-wrap: wrap;
     flex-direction: row;
     flex-grow: 1;
     justify-content: center;
@@ -23,8 +24,6 @@
     border: 1px solid #8E0000;
     border-radius: 30px;
     padding: 10px 75px;
-
-    margin-left: 50px;
 
     background-color: #FFC43A;
     color: #8E0000;
@@ -47,6 +46,7 @@
 }
 
 .headerspan {
+  padding: 30px;
   color: #7D8EFF;
   font-size: 3rem;         
   font-weight: 700;        
