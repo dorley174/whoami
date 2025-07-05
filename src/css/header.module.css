@@ -13,6 +13,7 @@
 }
 
 .link {
+    font-weight: 600;
     padding: 10px;
     color: #8E0000;
     flex-grow: 1;
