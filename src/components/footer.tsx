@@ -5,7 +5,7 @@ import styles from "../css/footer.module.css"
 const FooterPage: React.FC = () => {
   return (
     <footer className={styles.footer}>
-        <p className={styles.l1}>Found an error? <Link className={styles.l11} href="https://t.me/dorley">Contact us</Link></p>
+        <p className={styles.l1}>Found an error? <Link className={styles.l11} href="https://t.me/dorley">Contact me</Link></p>
         <p className={styles.l2}>Innopolis University, Summer 2025</p>
         <p className={styles.l3}>All rights reserved</p>
         <p className={styles.l4}>Who Am I?</p>

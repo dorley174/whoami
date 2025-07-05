@@ -6,6 +6,9 @@
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
+
+    font-size: 1.4rem;
+    color: #7D8EFF;
 }
 
 .card {
@@ -15,10 +18,25 @@
     flex-direction: column;
     
 
-    max-width: 200px;
+    max-width: 300px;
 }
 
-.cardinput {
-    width: 200px;
+.cardinput {    
+    width: 300px;
     text-align: center;
+    color: gray;
+    font-size: 1rem;
+    border: 1px solid gray;
+}
+
+.rulestitle{
+    margin-top: 70px;
+    text-align: center;
+    font-size: 2.2rem;
+    color: #7D8EFF;
+
+}
+
+.ruledesc {
+    max-width: 50vw;
 }
