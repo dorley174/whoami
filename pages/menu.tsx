@@ -1,6 +1,6 @@
 import React from 'react';
 import Link from 'next/link';
-import styles from '../src/css/menu.module.css';
+import styles from '@/css/menu.module.css';
 
 const MenuPage: React.FC = () => {
   return (
