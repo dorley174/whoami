@@ -26,9 +26,6 @@ logs/
 .env.test.local
 .env.production.local
 
-# VSCode settings
-.vscode/
-
 # OS junk
 .DS_Store
 Thumbs.db
