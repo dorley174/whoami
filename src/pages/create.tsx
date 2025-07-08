@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { useRouter } from 'next/router';
 import BackButton from '@/components/backButton';
+import styles from '../css/create.module.css';
 
 const CreatePage: React.FC = () => {
   const [nickname, setNickname] = useState('');
@@ -24,18 +25,20 @@ const CreatePage: React.FC = () => {
   return (
     <main>
       <BackButton></BackButton>
-      <input
-        value={nickname}
-        onChange={(e) => setNickname(e.target.value)}
-        placeholder="Nickname"
-      />
-      <button onClick={handleCreate}>Generate Room Code</button>
-      {code && (
-        <>
-          <p>Room Code: {code}</p>
-          <button onClick={handleJoin}>Join Room</button>
-        </>
-      )}
+      <div className={styles.createmenu}>
+        <input
+          value={nickname}
+          onChange={(e) => setNickname(e.target.value)}
+          placeholder="Your nickname"
+        />
+        <button onClick={handleCreate}>Generate Room Code</button>
+        {code && (
+          <>
+            <p>Room Code: {code}</p>
+            <button onClick={handleJoin}>Join Room</button>
+          </>
+        )}
+      </div>
     </main>
   );
 };

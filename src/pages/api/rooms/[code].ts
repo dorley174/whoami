@@ -1,11 +1,18 @@
-import { NextApiRequest, NextApiResponse } from 'next';
-import { getRoom } from '@/lib/roomStore';
+import type { NextApiRequest, NextApiResponse } from 'next';
+import { getRoom } from '@/lib/redis';
 
-export default function handler(req: NextApiRequest, res: NextApiResponse) {
-  const code = req.query.code as string;
-  const room = getRoom(code.toUpperCase());
+export default async function handler(req: NextApiRequest, res: NextApiResponse) {
+  const { code } = req.query;
 
-  if (!room) return res.status(404).json({ error: 'Room not found or expired' });
+  if (typeof code !== 'string') {
+    return res.status(400).json({ error: 'Invalid room code' });
+  }
 
-  res.status(200).json({ players: room.players });
+  const room = await getRoom(code);
+
+  if (!room) {
+    return res.status(404).json({ error: 'Room not found or expired' });
+  }
+
+  res.status(200).json(room);
 }

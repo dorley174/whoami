@@ -6,18 +6,18 @@ type Room = {
 
 const rooms: Record<string, Room> = {};
 
-function generateCode(): string {
-  const chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+export function generateRoomCode(): string {
+  const letters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
   let code = '';
   for (let i = 0; i < 6; i++) {
-    code += chars[Math.floor(Math.random() * chars.length)];
+    code += letters.charAt(Math.floor(Math.random() * letters.length));
   }
   return code;
 }
 
 export function createRoom(nickname: string): string {
-  let code = generateCode();
-  while (rooms[code]) code = generateCode();
+  let code = generateRoomCode();
+  while (rooms[code]) code = generateRoomCode();
 
   rooms[code] = {
     code,

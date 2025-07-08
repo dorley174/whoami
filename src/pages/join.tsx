@@ -5,32 +5,51 @@ import { useRouter } from 'next/router';
 const JoinPage: React.FC = () => {
   const [nickname, setNickname] = useState('');
   const [code, setCode] = useState('');
+  const [error, setError] = useState('');
   const router = useRouter();
 
   const handleJoin = async () => {
+    setError('');
+    if (!nickname || !code) {
+      setError('Please enter both nickname and room code');
+      return;
+    }
+
     const res = await fetch('/api/rooms/join', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ code, nickname }),
+      body: JSON.stringify({ nickname, code }),
     });
 
-    if (res.ok) {
-      router.push(`/rooms/${code.toUpperCase()}`);
-    } else {
-      alert('Room not found or expired');
+    const data = await res.json();
+
+    if (!res.ok) {
+      setError(data.error || 'Failed to join the room');
+      return;
     }
+
+    // Если успешно — переходим в комнату
+    router.push(`/rooms/${code}`);
   };
 
   return (
     <main>
       <BackButton></BackButton>
       <input
-        value={nickname}
-        onChange={(e) => setNickname(e.target.value)}
+        type="text"
         placeholder="Nickname"
+        value={nickname}
+        onChange={(e) => setNickname(e.target.value.toUpperCase())}
       />
-      <input value={code} onChange={(e) => setCode(e.target.value)} placeholder="Room Code" />
-      <button onClick={handleJoin}>Join Room</button>
+      <input
+        type="text"
+        placeholder="Room Code"
+        value={code}
+        onChange={(e) => setCode(e.target.value.toUpperCase())}
+        maxLength={6}
+      />
+      <button onClick={handleJoin}>Join</button>
+      {error && <p style={{ color: 'red' }}>{error}</p>}
     </main>
   );
 };

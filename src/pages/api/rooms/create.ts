@@ -1,10 +1,25 @@
-import { NextApiRequest, NextApiResponse } from 'next';
-import { createRoom } from '@/lib/roomStore';
+import type { NextApiRequest, NextApiResponse } from 'next';
+import { generateRoomCode } from '@/lib/roomStore';
+import { setRoom, isRoomExists } from '@/lib/redis';
 
-export default function handler(req: NextApiRequest, res: NextApiResponse) {
+export default async function handler(req: NextApiRequest, res: NextApiResponse) {
+  if (req.method !== 'POST') {
+    return res.status(405).json({ error: 'Method Not Allowed' });
+  }
+
   const { nickname } = req.body;
-  if (!nickname) return res.status(400).json({ error: 'Nickname is required' });
+  if (!nickname || typeof nickname !== 'string') {
+    return res.status(400).json({ error: 'Nickname is required' });
+  }
 
-  const code = createRoom(nickname);
+  let code = generateRoomCode();
+  let attempts = 0;
+  while ((await isRoomExists(code)) && attempts < 5) {
+    code = generateRoomCode();
+    attempts++;
+  }
+
+  await setRoom(code, { players: [nickname] });
+
   res.status(200).json({ code });
 }
