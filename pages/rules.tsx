@@ -2,7 +2,7 @@ import React from 'react';
 import Image from 'next/image';
 import HeaderPage from '../src/components/header';
 import FooterPage from '../src/components/footer';
-import styles from '../css/rules.module.css';
+import styles from '../src/css/rules.module.css';
 
 const RulesPage: React.FC = () => {
   return (

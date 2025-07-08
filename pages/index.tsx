@@ -1,6 +1,6 @@
 import React from 'react';
 import Link from 'next/link';
-import styles from '../css/index.module.css';
+import styles from '../src/css/index.module.css';
 
 const HomePage: React.FC = () => {
   return (

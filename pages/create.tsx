@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { useRouter } from 'next/router';
 import BackButton from '@/components/backButton';
-import styles from '../css/create.module.css';
+import styles from '../src/css/create.module.css';
 
 const CreatePage: React.FC = () => {
   const [nickname, setNickname] = useState('');
