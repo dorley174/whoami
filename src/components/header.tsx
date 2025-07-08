@@ -15,7 +15,7 @@ const HeaderPage: React.FC = () => {
         <Link className={styles.link} href="/rules">
           Rules
         </Link>
-        <Link className={styles.link} href="/about">
+        <Link className={styles.link} href="/faq">
           FAQ
         </Link>
       </nav>
