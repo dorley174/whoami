@@ -1,13 +1,10 @@
 import React from 'react';
 import Image from 'next/image';
-import HeaderPage from '@/components/header';
-import FooterPage from '@/components/footer';
 import styles from '@/css/rules.module.css';
 
 const RulesPage: React.FC = () => {
   return (
     <main>
-      <HeaderPage></HeaderPage>
       <p className={styles.rulestitle}>
         {' '}
         <strong>Who Am I?</strong> game rules
@@ -61,7 +58,6 @@ const RulesPage: React.FC = () => {
           </p>
         </section>
       </div>
-      <FooterPage></FooterPage>
     </main>
   );
 };

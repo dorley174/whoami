@@ -6,10 +6,10 @@ const MenuPage: React.FC = () => {
   return (
     <main>
       <div className={styles.buttons}>
-        <Link className={styles.button} href="/create">
+        <Link className={styles.button} href="/create-room">
           Create Room
         </Link>
-        <Link className={styles.button} href="/join">
+        <Link className={styles.button} href="/join-room">
           Join Game
         </Link>
       </div>
