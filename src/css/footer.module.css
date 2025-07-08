@@ -1,37 +1,37 @@
 .footer {
-    background-color: #FFC43A;
-    color: #8E0000;
-    border-top: 2px solid #8E0000;
-    border-bottom: 2px solid #8E0000;
+  background-color: #ffc43a;
+  color: #8e0000;
+  border-top: 2px solid #8e0000;
+  border-bottom: 2px solid #8e0000;
 
-    padding: 10px;
-    text-align: center;
-    display: block;
-    bottom: 0;
+  padding: 10px;
+  text-align: center;
+  display: block;
+  bottom: 0;
 }
 
 .l1 {
-    font-weight: 600;
-    font-size: 1.3rem;
+  font-weight: 600;
+  font-size: 1.3rem;
 }
 
 .l11 {
-    font-weight: 900;
-    font-size: 1.3rem;
-    text-decoration: none;
-    color: #8E0000;
+  font-weight: 900;
+  font-size: 1.3rem;
+  text-decoration: none;
+  color: #8e0000;
 }
 
 .l2 {
-    font-weight: 600;
-    font-size: 1.2rem;
+  font-weight: 600;
+  font-size: 1.2rem;
 }
 
 .l3 {
-    font-weight: 300;
-    font-size: 1.1rem;
+  font-weight: 300;
+  font-size: 1.1rem;
 }
 
 .l4 {
-    font-size: 1rem;
+  font-size: 1rem;
 }

@@ -3,7 +3,9 @@ html {
   text-decoration: none;
 }
 
-*, *::before, *::after {
+*,
+*::before,
+*::after {
   box-sizing: inherit;
 }
 

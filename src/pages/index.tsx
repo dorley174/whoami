@@ -2,7 +2,7 @@ import React from 'react';
 import Link from 'next/link';
 import HeaderPage from '../components/header';
 import FooterPage from '../components/footer';
-import styles from "../css/index.module.css";
+import styles from '../css/index.module.css';
 
 const HomePage: React.FC = () => {
   return (
@@ -20,9 +20,12 @@ const HomePage: React.FC = () => {
           </Link>
         </div>
         <div className={styles.headerdesc}>
-          <p><strong>Who Am I</strong>  is a simple and very exciting game. Plunge into the world of logic by making a character from our world, as well as guess the one whom you were made. Now this unforgettable experience can be obtained even online!</p>
-        </div> 
-        
+          <p>
+            <strong>Who Am I</strong> is a simple and very exciting game. Plunge into the world of
+            logic by making a character from our world, as well as guess the one whom you were made.
+            Now this unforgettable experience can be obtained even online!
+          </p>
+        </div>
       </div>
       <FooterPage></FooterPage>
     </main>

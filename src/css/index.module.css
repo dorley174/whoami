@@ -1,73 +1,70 @@
 .headertitle {
-    width: 60vw;
+  width: 60vw;
 
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    padding: 0 30px;
-    margin: 100px auto 100px auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 0 30px;
+  margin: 100px auto 100px auto;
 }
 
 .headersubtitle {
-    display: flex;
-    flex-wrap: wrap;
-    flex-direction: row;
-    flex-grow: 1;
-    justify-content: center;
-    align-items: center;
-
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  flex-grow: 1;
+  justify-content: center;
+  align-items: center;
 }
 
 .playbutton {
-    
-    border: 2px solid #8E0000;
-    border-radius: 30px;
-    padding: 10px 75px;
+  border: 2px solid #8e0000;
+  border-radius: 30px;
+  padding: 10px 75px;
 
-    background-color: #FFC43A;
-    color: #8E0000;
+  background-color: #ffc43a;
+  color: #8e0000;
 
-    text-decoration: none;
-    font-weight: 900;
-    font-size: 40px;
+  text-decoration: none;
+  font-weight: 900;
+  font-size: 40px;
 }
 
 .headerdesc {
-    margin-top: 30px;
-    color: #ED9200;
-    font-size: 1.25rem;
-    text-align: center;
+  margin-top: 30px;
+  color: #ed9200;
+  font-size: 1.25rem;
+  text-align: center;
 }
 
 .playbutton:hover {
-    background-color: #eca500;
-    padding: 15px 80px;
+  background-color: #eca500;
+  padding: 15px 80px;
 }
 
 .headerspan {
   padding: 30px;
-  color: #7D8EFF;
-  font-size: 3rem;         
-  font-weight: 700;        
-  line-height: 1.25;       
-  text-align: center;      
-
+  color: #7d8eff;
+  font-size: 3rem;
+  font-weight: 700;
+  line-height: 1.25;
+  text-align: center;
 }
 
 @media (min-width: 768px) {
   .headerspan {
-    font-size: 3.75rem;    
+    font-size: 3.75rem;
     text-align: left;
   }
 }
 
 @media (min-width: 1024px) {
   .headerspan {
-    font-size: 4.5rem;     
+    font-size: 4.5rem;
   }
 }
 
 .block {
-    display: block;
+  display: block;
 }
