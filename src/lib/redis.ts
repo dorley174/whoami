@@ -3,7 +3,6 @@ import { Redis } from '@upstash/redis';
 console.log('Redis URL:', process.env.UPSTASH_REDIS_REST_URL);
 console.log('Redis Token:', process.env.UPSTASH_REDIS_REST_TOKEN);
 
-
 export const redis = new Redis({
   url: process.env.UPSTASH_REDIS_REST_URL!,
   token: process.env.UPSTASH_REDIS_REST_TOKEN!,
@@ -23,7 +22,6 @@ export async function setRoom(code: string, data: { players: string[] }) {
     throw new Error('Failed to set room');
   }
 }
-
 
 // Проверка существования комнаты
 export async function isRoomExists(code: string): Promise<boolean> {
