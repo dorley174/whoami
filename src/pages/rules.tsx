@@ -1,4 +1,5 @@
 import React from 'react';
+import Image from 'next/image';
 import HeaderPage from '../components/header';
 import FooterPage from '../components/footer';
 import styles from '../css/rules.module.css';
@@ -18,7 +19,7 @@ const RulesPage: React.FC = () => {
           </p>
           <div className={styles.card}>
             <p className={styles.cardinput}>Nicolas Cage</p>
-            <img className={styles.cardimg} src="/person.jpg" alt="empty person" />
+            <Image className={styles.cardimg} src="/person.jpg" alt="empty person" />
           </div>
         </section>
 
@@ -39,7 +40,7 @@ const RulesPage: React.FC = () => {
         <section className={styles.rule}>
           <p className={styles.ruledesc}>
             <strong>3.</strong> If the answer to your question is <strong>YES</strong>, you can ask
-            one more question.<br></br>If there is answer<strong>NO</strong>, then turn goes to the
+            one more question.<br></br>If there is answer <strong>NO</strong>, then turn goes to the
             next player
           </p>
           <div className={styles.card}>
@@ -56,7 +57,7 @@ const RulesPage: React.FC = () => {
 
         <section className={styles.rule}>
           <p className={styles.ruledesc}>
-            <strong>4.</strong> Repeat asking until <strong>all creatures guessed</strong>
+            <strong>4.</strong> Play until <strong>all creatures guessed</strong>
           </p>
         </section>
       </div>
