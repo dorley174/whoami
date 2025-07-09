@@ -33,7 +33,27 @@ const RoomPage = () => {
     }
   }, []);
 
-  // загружаем своё поле из localStorage
+  useEffect(() => {
+    if (!code) return;
+
+    const fetchRoom = async () => {
+      try {
+        const res = await fetch(`/api/rooms/${code}`);
+        if (!res.ok) throw new Error('Failed to load room');
+        const data: RoomData = await res.json();
+        setRoom(data);
+      } catch (err) {
+        setError('Failed to load room data');
+      }
+    };
+
+    fetchRoom();
+
+    const interval = setInterval(fetchRoom, 5000);
+
+    return () => clearInterval(interval);
+  }, [code]);
+
   useEffect(() => {
     if (userId) {
       const saved = localStorage.getItem(`textarea_${userId}`);
