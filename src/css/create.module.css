@@ -1,7 +1,137 @@
 .createmenu {
-  display: flex;
+  display: inline-flex;
   flex-direction: column;
-  width: 100vw;
   justify-content: space-between;
   align-items: center;
+  background-color: #ffc43a;
+
+  border-radius: 20px;
+  border: 3px solid #8e0000;
+
+  margin: 0 auto;
+  padding: 30px 50px;
+}
+
+.wrapper {
+  margin: 50px 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.setting {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+}
+
+.settingtitle {
+  color: #8e0000;
+  font-weight: 600;
+  font-size: 1.2rem;
+}
+
+.settinginput {
+  padding: 3px;
+  color: #8e0000;
+  font-weight: 400;
+  font-size: 1.2rem;
+  font-style: italic;
+}
+
+.code {
+  padding: 3px;
+  color: #8e0000;
+  font-weight: 600;
+  font-size: 1.5rem;
+}
+
+.nicknameinput {
+  margin-top: 20px;
+  padding: 10px 30px;
+  width: 100%;
+  text-align: center;
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #8e0000;
+
+  background-color: #ffe29e;
+  border: 3px solid #8e0000;
+  border-radius: 20px;
+}
+
+.buttoncreate {
+  margin-top: 20px;
+  padding: 10px 30px;
+  width: 80%;
+  text-align: center;
+  font-size: 1.2rem;
+  font-weight: bold;
+  color: #2c304b;
+
+  background-color: #7d8eff;
+  border: 3px solid #2c304b;
+  border-radius: 20px;
+}
+
+.error {
+  margin-top: 20px;
+  padding: 10px 30px;
+  width: 100%;
+  text-align: center;
+  font-size: 1.2rem;
+  font-weight: bold;
+  color: #ff0000;
+
+  background-color: #ff8787;
+  border: 2px solid #ff0000;
+}
+
+.line {
+  width: 100%;
+  border: none;
+  border-top: 4px solid #8e0000;
+  margin-top: 30px;
+}
+
+.nicknameinput::placeholder {
+  color: #b06d00a0;
+}
+
+.roomcode {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+}
+
+.buttons {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+}
+
+.joinbutton {
+  padding: 10px 30px;
+  display: flex;
+  text-align: center;
+
+  font-size: 1.1rem;
+  font-weight: 300;
+  color: #8e0000;
+
+  background-color: #ffe29e;
+  border: 2px solid #8e0000;
+  border-radius: 20px;
+}
+
+.joinbutton:hover {
+  background-color: #ffd77a;
+  padding: 11px 31px;
 }

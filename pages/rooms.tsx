@@ -1,15 +1,15 @@
 import React from 'react';
 import Link from 'next/link';
-import styles from '@/css/menu.module.css';
+import styles from '@/css/rooms.module.css';
 
-const MenuPage: React.FC = () => {
+const RoomsPage: React.FC = () => {
   return (
     <main>
       <div className={styles.buttons}>
-        <Link className={styles.button} href="/create-room">
+        <Link className={styles.button} href="/create">
           Create Room
         </Link>
-        <Link className={styles.button} href="/join-room">
+        <Link className={styles.button} href="/join">
           Join Game
         </Link>
       </div>
@@ -17,4 +17,4 @@ const MenuPage: React.FC = () => {
   );
 };
 
-export default MenuPage;
+export default RoomsPage;

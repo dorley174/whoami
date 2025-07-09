@@ -9,7 +9,7 @@ const HeaderPage: React.FC = () => {
         <Link className={styles.link} href="/">
           Who Am I?
         </Link>
-        <Link className={styles.link} href="/menu">
+        <Link className={styles.link} href="/rooms">
           Rooms
         </Link>
         <Link className={styles.link} href="/rules">

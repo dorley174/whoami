@@ -12,7 +12,7 @@ const HomePage: React.FC = () => {
             <span className={styles.block}>Play.</span>
             <span className={styles.block}>Enjoy.</span>
           </div>
-          <Link href="/menu" className={styles.playbutton}>
+          <Link href="/rooms" className={styles.playbutton}>
             <p>Start</p>
           </Link>
         </div>

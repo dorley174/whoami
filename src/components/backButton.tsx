@@ -3,31 +3,27 @@ import Link from 'next/link';
 
 const BackButton: React.FC = () => {
   return (
-    <Link style={{ marginTop: '500px' }} href="/menu" className="absolute top-8 left-8 z-10">
-      <svg
-        width="52"
-        height="37"
-        viewBox="0 0 48 32"
-        fill="none"
-        xmlns="http://www.w3.org/2000/svg"
-      >
-        <path
-          d="M20 30L4 16L20 2"
-          stroke="#FFC43A"
-          strokeWidth="6"
-          strokeLinecap="round"
-          strokeLinejoin="round"
-        />
-        <line
-          x1="8"
-          y1="16"
-          x2="46"
-          y2="16"
-          stroke="#FFC43A"
-          strokeWidth="6"
-          strokeLinecap="round"
-        />
-      </svg>
+    <Link
+      style={{
+        marginLeft: '30px',
+        marginTop: '30px',
+        display: 'flex',
+        flexDirection: 'row',
+        width: 'fit-content',
+        textAlign: 'center',
+        padding: '10px 50px',
+        fontSize: '1.3rem',
+        fontWeight: '600',
+        color: '#8e0000',
+        backgroundColor: '#ffe29e',
+        border: '3px solid #8e0000',
+        borderRadius: '20px',
+        textDecoration: 'none',
+      }}
+      href="/rooms"
+      className="absolute top-8 left-8 z-10"
+    >
+      ◄ Back to rooms
     </Link>
   );
 };

@@ -20,13 +20,12 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
       attempts++;
     }
 
-    // Логируем перед сохранением
-    console.log('Generated room code:', code);
+    // console.log('Generated room code:', code);
     await setRoom(code, { players: [nickname] });
 
     res.status(200).json({ code });
   } catch (err: any) {
-    console.error('API Error:', err);
+    // console.error('API Error:', err);
     res.status(500).json({ error: 'Internal Server Error' });
   }
 }

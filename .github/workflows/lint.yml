@@ -29,6 +29,10 @@ jobs:
         run: |
           npx eslint . --ext .js,.ts --fix
 
+      - name: Run Prettier check with ESLint
+        run: |
+          npx eslint . --ext .js,.ts --fix --max-warnings 0  # Проверяет, что код форматируется по правилам Prettier через ESLint
+
       - name: Run Prettier
         run: |
-          npx prettier --check "**/*.{js,ts,json,css,md}"
+          npx prettier --check "**/*.{js,ts,json,css,md}"  # Проверка, что код форматируется в соответствии с Prettier

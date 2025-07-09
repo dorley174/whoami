@@ -1,5 +1,7 @@
 {
-  "editor.formatOnSave": true,
-  "editor.defaultFormatter": "esbenp.prettier-vscode",
-  "eslint.autoFixOnSave": true
+  "editor.formatOnSave": true, // auto format while saving
+  "editor.defaultFormatter": "esbenp.prettier-vscode", // now prettier is formattier
+  "eslint.autoFixOnSave": true, // autoformat ESLint wjile saving
+  "eslint.validate": ["javascript", "typescript", "javascriptreact", "typescriptreact"], // file data types for ESLint
+  "prettier.requireConfig": true // need to exist Prettier in project
 }

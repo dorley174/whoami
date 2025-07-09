@@ -11,13 +11,11 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
     return res.status(400).json({ error: 'Nickname and code are required' });
   }
 
-  // Проверяем, что комната существует
   const exists = await isRoomExists(code);
   if (!exists) {
     return res.status(404).json({ error: 'Room not found or expired' });
   }
 
-  // Добавляем игрока
   const success = await addPlayerToRoom(code, nickname);
   if (!success) {
     return res.status(500).json({ error: 'Failed to add player to the room' });

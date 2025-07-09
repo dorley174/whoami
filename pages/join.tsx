@@ -28,7 +28,7 @@ const JoinPage: React.FC = () => {
       return;
     }
 
-    // Если успешно — переходим в комнату
+    // room join
     router.push(`/rooms/${code}`);
   };
 
