@@ -1,0 +1,102 @@
+.actives {
+  margin: 20px 0;
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  min-height: 500px;
+}
+
+@media (max-width: 500px) {
+  .actives {
+    justify-content: center;
+    flex-direction: column;
+  }
+
+  .vline {
+    border-left: 0;
+  }
+}
+
+.spectators {
+  flex-grow: 1;
+}
+
+.players {
+  flex-grow: 7;
+}
+
+.player {
+  justify-content: center;
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  width: 18vw;
+
+  background-color: #7d8eff;
+  border: 3px solid #2c304b;
+  border-radius: 10px;
+  padding: 10px;
+  margin: 10px 20px;
+}
+
+.playersarea {
+  display: flex;
+  flex-direction: column;
+}
+
+.vline {
+  border: none;
+  border-left: 3px solid #8e0000;
+  margin-top: 30px;
+}
+
+.playernotes {
+  text-align: center;
+  justify-content: center;
+  align-items: center;
+  margin: auto;
+  padding: 5px;
+  width: 17vw;
+  text-align: center;
+  background-color: #7d8eff;
+  border-radius: 30px;
+  font-size: 1.2rem;
+  font-weight: 300;
+  color: #2c304b;
+}
+
+.addbutton {
+  background-color: #ffc43a;
+  border-radius: 35px;
+  text-align: center;
+
+  color: #8e0000;
+  border: 3px solid #8e0000;
+  font-size: 1.3rem;
+  margin-left: 10px;
+}
+
+.playerguess {
+  width: 17vw;
+  margin: 10px 0;
+  text-align: center;
+  background-color: #7d8eff;
+  border-radius: 30px;
+  font-size: 1.2rem;
+  font-weight: 300;
+  color: #2c304b;
+}
+
+.playername {
+  width: 17vw;
+  margin: 10px 0;
+  text-align: center;
+  font-size: 1.3rem;
+  font-weight: 600;
+  color: #2c304b;
+}
+
+.playerphoto {
+  width: 17vw;
+  height: 35vh;
+}

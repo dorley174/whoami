@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import { useRouter } from 'next/router';
 import Image from 'next/image';
 import avatar from '../../public/person.jpg';
+import styles from '@/css/uroom.module.css';
 
 type Participant = {
   id: string;
@@ -22,15 +23,31 @@ const RoomPage = () => {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState('');
   const [userId, setUserId] = useState<string | null>(null);
+  const [textareas, setTextareas] = useState<{ [id: string]: string }>({});
+
+  // загружаем своё поле из localStorage
+  useEffect(() => {
+    if (userId) {
+      const saved = localStorage.getItem(`textarea_${userId}`);
+      if (saved) {
+        setTextareas((prev) => ({ ...prev, [userId]: saved }));
+      }
+    }
+  }, [userId]);
+
+  const handleTextareaChange = (id: string, value: string) => {
+    setTextareas((prev) => ({ ...prev, [id]: value }));
+    if (id === userId) {
+      localStorage.setItem(`textarea_${id}`, value);
+    }
+  };
 
   console.log('userId:', userId);
   console.log('room spectators:', room?.spectators);
 
   useEffect(() => {
-    if (typeof window !== 'undefined') {
-      setNickname(localStorage.getItem('nickname'));
-      setUserId(localStorage.getItem('userId'));
-    }
+    const id = localStorage.getItem('userId');
+    if (id) setUserId(id);
   }, []);
 
   useEffect(() => {
@@ -76,35 +93,62 @@ const RoomPage = () => {
   if (!room || !nickname) return <p>Loading...</p>;
 
   return (
-    <div>
-      <h2>Игроки</h2>
-      <ul>
-        {room.players.map((p) => (
-          <li key={p.id}>
-            <Image src={avatar} alt="avatar" width={32} height={32} />
-            {p.nickname}
-            {p.nickname === nickname && ' (You)'}
-          </li>
-        ))}
-      </ul>
+    <>
+      <div className={styles.actives}>
+        <div className={styles.spectators}>
+          <h2 style={{ color: '#8e0000', textAlign: 'center' }}>Spectators</h2>
+          <ul style={{ color: '#8e0000', textAlign: 'center' }}>
+            {room.spectators.map((s) => (
+              <li style={{ listStyleType: 'none', padding: 0, margin: 0 }} key={s.id}>
+                {s.nickname}
+                {s.id === userId && (
+                  <button
+                    disabled={loading}
+                    className={styles.addbutton}
+                    onClick={() => promote(s.nickname)}
+                  >
+                    +
+                  </button>
+                )}
+              </li>
+            ))}
+          </ul>
+        </div>
+        <hr className={styles.vline} />
+        <ul className={styles.players}>
+          {room.players.map((p) => {
+            const isCurrentUser = p.id === userId;
+            return (
+              <>
+                <div className={styles.playersarea}>
+                  <div key={p.id} className={styles.player}>
+                    <input
+                      type="text"
+                      placeholder="Guessed person"
+                      className={styles.playerguess}
+                    />
+                    <Image src={avatar} alt="avatar" className={styles.playerphoto} />
+                    <p className={styles.playername}>{p.nickname}</p>
+                  </div>
+                  {isCurrentUser && (
+                    <textarea
+                      placeholder="Your notes"
+                      className={styles.playernotes}
+                      rows={7}
+                      cols={40}
+                      value={textareas[p.id] || ''}
+                      onChange={(e) => handleTextareaChange(p.id, e.target.value)}
+                    />
+                  )}
+                </div>
+              </>
+            );
+          })}
+        </ul>
 
-      <h2>Наблюдатели</h2>
-      <ul>
-        {room.spectators.map((s) => (
-          <li key={s.id}>
-            <img src="/person.jpg" width={32} />
-            {s.nickname}
-            {s.id === userId && (
-              <button disabled={loading} onClick={() => promote(s.nickname)}>
-                +
-              </button>
-            )}
-          </li>
-        ))}
-      </ul>
-
-      {error && <p style={{ color: 'red' }}>{error}</p>}
-    </div>
+        {error && <p style={{ color: 'red' }}>{error}</p>}
+      </div>
+    </>
   );
 };
 
