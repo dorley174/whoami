@@ -23,7 +23,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
   const createdAt = Date.now();
   const roomData: RoomData = {
     players: [],
-    spectators: [{ id, nickname }], // используем переданный id
+    spectators: [{ id, nickname }],
     createdAt,
   };
 

@@ -115,36 +115,33 @@ const RoomPage = () => {
           </ul>
         </div>
         <hr className={styles.vline} />
-        <ul className={styles.players}>
-          {room.players.map((p) => {
-            const isCurrentUser = p.id === userId;
-            return (
-              <>
-                <div className={styles.playersarea}>
-                  <div key={p.id} className={styles.player}>
-                    <input
-                      type="text"
-                      placeholder="Guessed person"
-                      className={styles.playerguess}
-                    />
-                    <Image src={avatar} alt="avatar" className={styles.playerphoto} />
-                    <p className={styles.playername}>{p.nickname}</p>
-                  </div>
+        <div className={styles.right}>
+          <ul className={styles.players}>
+            {room.players.map((p) => (
+              <div key={p.id} className={styles.playersarea}>
+                <div className={styles.player}>
+                  <input type="text" placeholder="Guessed person" className={styles.playerguess} />
+                  <Image src={avatar} alt="avatar" className={styles.playerphoto} />
+                  <p className={styles.playername}>{p.nickname}</p>
                 </div>
-                {isCurrentUser && (
-                  <textarea
-                    placeholder="Your notes"
-                    className={styles.playernotes}
-                    rows={7}
-                    cols={40}
-                    value={textareas[p.id] || ''}
-                    onChange={(e) => handleTextareaChange(p.id, e.target.value)}
-                  />
-                )}
-              </>
-            );
-          })}{' '}
-        </ul>
+              </div>
+            ))}
+          </ul>
+
+          {/* Отдельно, ниже и по центру – textarea только для текущего игрока */}
+          {room.players.some((p) => p.id === userId) && (
+            <div style={{ display: 'flex', justifyContent: 'center', marginTop: '20px' }}>
+              <textarea
+                placeholder="Your notes"
+                className={styles.playernotes}
+                rows={7}
+                cols={40}
+                value={textareas[userId!] || ''}
+                onChange={(e) => handleTextareaChange(userId!, e.target.value)}
+              />
+            </div>
+          )}
+        </div>
 
         {error && <p style={{ color: 'red' }}>{error}</p>}
       </div>

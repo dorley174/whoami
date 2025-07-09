@@ -30,6 +30,20 @@
   justify-content: space-around;
 }
 
+.right {
+  display: flex;
+  flex-grow: 7;
+  flex-direction: column;
+  flex-wrap: wrap;
+}
+
+.notesWrapper {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+}
+
 .player {
   justify-content: center;
   align-items: center;
