@@ -1,0 +1,40 @@
+.copybutton {
+  padding: 10px 30px;
+  display: flex;
+  text-align: center;
+
+  font-size: 1.1rem;
+  font-weight: 300;
+  color: #2c304b;
+
+  background-color: #7d8eff;
+  border: 2px solid #2c304b;
+  border-radius: 20px;
+}
+
+.copybutton:hover {
+  background-color: #7083ff;
+  padding: 11px 31px;
+}
+
+.backbutton {
+  margin-left: 30px;
+  margin-top: 30px;
+  display: flex;
+  flex-direction: row;
+  width: fit-content;
+  text-align: center;
+  padding: 10px 50px;
+  font-size: 1.3rem;
+  font-weight: 600;
+  color: #8e0000;
+  background-color: #ffe29e;
+  border: 3px solid #8e0000;
+  border-radius: 20px;
+  text-decoration: none;
+}
+
+.backbutton:hover {
+  padding: 11px 53px;
+  background-color: #fad98c;
+}

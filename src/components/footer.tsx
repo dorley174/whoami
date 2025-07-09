@@ -8,7 +8,7 @@ const FooterPage: React.FC = () => {
       <p className={styles.l1}>
         Found an error?{' '}
         <Link className={styles.l11} href="https://t.me/dorley">
-          Contact me
+          Contact me!
         </Link>
       </p>
       <p className={styles.l2}>Innopolis University, Summer 2025</p>

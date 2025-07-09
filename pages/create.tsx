@@ -63,7 +63,7 @@ const CreatePage: React.FC = () => {
           <h1 style={{ color: '#8e0000' }}>Room settings</h1>
           <div className={styles.setting}>
             <p className={styles.settingtitle}>Time session:</p>
-            <p className={styles.settinginput}>12 hours</p>
+            <p className={styles.settinginput}>2 hours</p>
           </div>
           <div className={styles.setting}>
             <p className={styles.settingtitle}>Max people in room:</p>
@@ -86,7 +86,7 @@ const CreatePage: React.FC = () => {
           {code && !loading && (
             <>
               <hr className={styles.line} />
-
+              <h1 style={{ color: '#8e0000' }}>Your room</h1>
               <div className={styles.roomcode}>
                 <p className={styles.settingtitle}>Room Code:</p>
                 <p className={styles.code}>{code}</p>

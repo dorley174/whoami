@@ -5,8 +5,8 @@ export const redis = new Redis({
   token: process.env.UPSTASH_REDIS_REST_TOKEN!,
 });
 
-// TTL 12 hours
-const TTL_SECONDS = 60 * 60 * 12;
+// TTL 2 hours
+const TTL_SECONDS = 60 * 60 * 2;
 
 // room storage
 export async function setRoom(code: string, data: { players: string[] }) {

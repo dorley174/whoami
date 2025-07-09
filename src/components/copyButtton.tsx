@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import styles from '@/css/copybutton.module.css';
+import styles from '@/css/buttons.module.css';
 
 interface CopyButtonProps {
   copy: string;
@@ -14,7 +14,7 @@ const CopyButton: React.FC<CopyButtonProps> = ({ copy }) => {
       .writeText(copy)
       .then(() => {
         setCopied(true);
-        setTimeout(() => setCopied(false), 2000);
+        setTimeout(() => setCopied(false), 1000);
       })
       .catch(() => {
         alert('Error due coping code');
