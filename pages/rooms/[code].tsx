@@ -120,7 +120,16 @@ const RoomPage = () => {
             {room.players.map((p) => (
               <div key={p.id} className={styles.playersarea}>
                 <div className={styles.player}>
-                  <input type="text" placeholder="Guessed person" className={styles.playerguess} />
+                  {p.id === userId ? (
+                    <p className={styles.playerguess}>???</p>
+                  ) : (
+                    <input
+                      type="text"
+                      placeholder="Guessed person"
+                      className={styles.playerguess}
+                    />
+                  )}
+
                   <Image src={avatar} alt="avatar" className={styles.playerphoto} />
                   <p className={styles.playername}>{p.nickname}</p>
                 </div>
@@ -128,7 +137,6 @@ const RoomPage = () => {
             ))}
           </ul>
 
-          {/* Отдельно, ниже и по центру – textarea только для текущего игрока */}
           {room.players.some((p) => p.id === userId) && (
             <div style={{ display: 'flex', justifyContent: 'center', marginTop: '20px' }}>
               <textarea
