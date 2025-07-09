@@ -24,6 +24,14 @@ const RoomPage = () => {
   const [error, setError] = useState('');
   const [userId, setUserId] = useState<string | null>(null);
   const [textareas, setTextareas] = useState<{ [id: string]: string }>({});
+  const [inputValues, setInputValues] = useState<{ [id: string]: string }>({});
+
+  useEffect(() => {
+    const saved = localStorage.getItem('inputValues');
+    if (saved) {
+      setInputValues(JSON.parse(saved));
+    }
+  }, []);
 
   // загружаем своё поле из localStorage
   useEffect(() => {
@@ -42,8 +50,13 @@ const RoomPage = () => {
     }
   };
 
-  console.log('userId:', userId);
-  console.log('room spectators:', room?.spectators);
+  const handleInputChange = (id: string, value: string) => {
+    setInputValues((prev) => {
+      const updated = { ...prev, [id]: value };
+      localStorage.setItem('inputValues', JSON.stringify(updated));
+      return updated;
+    });
+  };
 
   useEffect(() => {
     const id = localStorage.getItem('userId');
@@ -127,9 +140,10 @@ const RoomPage = () => {
                       type="text"
                       placeholder="Guessed person"
                       className={styles.playerguess}
+                      value={inputValues[p.id] || ''}
+                      onChange={(e) => handleInputChange(p.id, e.target.value)}
                     />
                   )}
-
                   <Image src={avatar} alt="avatar" className={styles.playerphoto} />
                   <p className={styles.playername}>{p.nickname}</p>
                 </div>

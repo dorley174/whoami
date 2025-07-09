@@ -7,7 +7,7 @@ module.exports = {
   },
   extends: ['next', 'next/core-web-vitals', 'plugin:prettier/recommended'],
   rules: {
-    semi: ['error', 'always'], // Требуется точка с запятой в конце выражений
-    'no-console': 'warn', // Предупреждение при использовании console.log
+    semi: ['error', 'always'], // ;
+    'no-console': 'warn', // console.log
   },
 };
