@@ -90,7 +90,7 @@ const RoomPage = () => {
     }
   };
 
-  if (!room || !nickname) return <p>Loading...</p>;
+  if (!room || !nickname) return <p>Room is loading...</p>;
 
   return (
     <>
@@ -143,7 +143,7 @@ const RoomPage = () => {
                 )}
               </>
             );
-          })}
+          })}{' '}
         </ul>
 
         {error && <p style={{ color: 'red' }}>{error}</p>}
