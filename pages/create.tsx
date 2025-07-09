@@ -3,6 +3,7 @@ import { useRouter } from 'next/router';
 import BackButton from '@/components/backButton';
 import CopyButton from '@/components/copyButtton';
 import styles from '@/css/createjoin.module.css';
+import { v4 as uuidv4 } from 'uuid';
 
 const CreatePage: React.FC = () => {
   const [nickname, setNickname] = useState('');
@@ -19,11 +20,15 @@ const CreatePage: React.FC = () => {
     }
     setLoading(true);
 
+    const id = uuidv4(); // ← Генерация ID здесь
+    localStorage.setItem('nickname', nickname);
+    localStorage.setItem('userId', id);
+
     try {
       const res = await fetch('/api/rooms/create', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ nickname }),
+        body: JSON.stringify({ nickname, id }), // ← Отправка id и nickname
       });
 
       if (!res.ok) {
@@ -69,6 +74,7 @@ const CreatePage: React.FC = () => {
             <p className={styles.settingtitle}>Max people in room:</p>
             <p className={styles.settinginput}>12 members</p>
           </div>
+
           <input
             className={styles.nicknameinput}
             value={nickname}
@@ -96,7 +102,7 @@ const CreatePage: React.FC = () => {
                 <button className={styles.joinbutton} onClick={handleJoin}>
                   Join Room
                 </button>
-                <CopyButton className={styles.joinbutton} copy={code}></CopyButton>
+                <CopyButton className={styles.joinbutton} copy={code} />
               </div>
             </>
           )}

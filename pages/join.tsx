@@ -2,13 +2,16 @@ import BackButton from '@/components/backButton';
 import styles from '@/css/createjoin.module.css';
 import React, { useState } from 'react';
 import { useRouter } from 'next/router';
+import { v4 as uuidv4 } from 'uuid';
 
 const JoinPage: React.FC = () => {
+  const id = uuidv4();
   const [nickname, setNickname] = useState('');
   const [code, setCode] = useState('');
   const [error, setError] = useState('');
   const router = useRouter();
-
+  localStorage.setItem('nickname', nickname);
+  localStorage.setItem('userId', id);
   const handleJoin = async () => {
     setError('');
 
@@ -25,7 +28,7 @@ const JoinPage: React.FC = () => {
     const res = await fetch('/api/rooms/join', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ nickname, code }),
+      body: JSON.stringify({ nickname, code, id }),
     });
 
     const data = await res.json();

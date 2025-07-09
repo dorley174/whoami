@@ -1,14 +1,14 @@
 import type { NextApiRequest, NextApiResponse } from 'next';
-import { addPlayerToRoom, isRoomExists } from '@/lib/redis';
+import { isRoomExists, addSpectator } from '@/lib/redis';
 
 export default async function handler(req: NextApiRequest, res: NextApiResponse) {
   if (req.method !== 'POST') {
     return res.status(405).json({ error: 'Method Not Allowed' });
   }
 
-  const { nickname, code } = req.body;
-  if (!nickname || !code) {
-    return res.status(400).json({ error: 'Nickname and code are required' });
+  const { nickname, code, id } = req.body;
+  if (!nickname || !code || !id) {
+    return res.status(400).json({ error: 'Nickname, id and code are required' });
   }
 
   const exists = await isRoomExists(code);
@@ -16,10 +16,10 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
     return res.status(404).json({ error: 'Room not found or expired' });
   }
 
-  const success = await addPlayerToRoom(code, nickname);
-  if (!success) {
-    return res.status(500).json({ error: 'Failed to add player to the room' });
+  const added = await addSpectator(code, { id, nickname });
+  if (!added) {
+    return res.status(400).json({ error: 'Nickname or ID already in use' });
   }
 
-  res.status(200).json({ message: 'Joined the room successfully' });
+  res.status(200).json({ message: 'Joined successfully' });
 }
