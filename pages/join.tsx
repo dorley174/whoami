@@ -1,17 +1,26 @@
-import BackButton from '@/components/backButton';
-import styles from '@/css/createjoin.module.css';
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useRouter } from 'next/router';
 import { v4 as uuidv4 } from 'uuid';
+import BackButton from '@/components/backButton';
+import styles from '@/css/createjoin.module.css';
 
 const JoinPage: React.FC = () => {
-  const id = uuidv4();
   const [nickname, setNickname] = useState('');
   const [code, setCode] = useState('');
   const [error, setError] = useState('');
   const router = useRouter();
-  localStorage.setItem('nickname', nickname);
-  localStorage.setItem('userId', id);
+  const [userId, setUserId] = useState<string>('');
+
+  useEffect(() => {
+    const id = uuidv4();
+    localStorage.setItem('userId', id);
+    setUserId(id);
+  }, []);
+
+  useEffect(() => {
+    localStorage.setItem('nickname', nickname);
+  }, [nickname]);
+
   const handleJoin = async () => {
     setError('');
 
@@ -21,14 +30,12 @@ const JoinPage: React.FC = () => {
     } else if (!code) {
       setError('Please enter invite code to enter the room');
       return;
-    } else if (!nickname || !code) {
-      setError('Please enter both nickname and room code');
-      return;
     }
+
     const res = await fetch('/api/rooms/join', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ nickname, code, id }),
+      body: JSON.stringify({ nickname, code, id: userId }),
     });
 
     const data = await res.json();
@@ -38,13 +45,12 @@ const JoinPage: React.FC = () => {
       return;
     }
 
-    // room join
     router.push(`/rooms/${code}`);
   };
 
   return (
     <>
-      <BackButton></BackButton>
+      <BackButton />
       <div className={styles.wrapper}>
         <div className={styles.createmenu}>
           <h1 style={{ color: '#8e0000' }}>Join room</h1>
