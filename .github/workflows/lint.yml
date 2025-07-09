@@ -26,4 +26,3 @@ jobs:
 
       - name: Run Prettier
         run: npx prettier --check "**/*.{js,ts,json,css,md}"
-

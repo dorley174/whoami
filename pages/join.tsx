@@ -1,4 +1,5 @@
 import BackButton from '@/components/backButton';
+import styles from '@/css/createjoin.module.css';
 import React, { useState } from 'react';
 import { useRouter } from 'next/router';
 
@@ -10,11 +11,19 @@ const JoinPage: React.FC = () => {
 
   const handleJoin = async () => {
     setError('');
-    if (!nickname || !code) {
-      setError('Please enter both nickname and room code');
+    
+    if (!nickname) {
+      setError('Please enter your nickname');
+      return;
+    } 
+    else if (!code) {
+      setError('Please enter invite code to enter the room');
       return;
     }
-
+    else if (!nickname || !code) {
+          setError('Please enter both nickname and room code');
+          return;
+        } 
     const res = await fetch('/api/rooms/join', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
@@ -35,21 +44,29 @@ const JoinPage: React.FC = () => {
   return (
     <main>
       <BackButton></BackButton>
+      <div className={styles.wrapper}>
+        <div className={styles.createmenu}>
+          <h1 style={{ color: '#8e0000' }}>Join room</h1>
+      
       <input
+      className={styles.nicknameinput}
         type="text"
-        placeholder="Nickname"
+        placeholder="Your nickname"
         value={nickname}
-        onChange={(e) => setNickname(e.target.value.toUpperCase())}
+        onChange={(e) => setNickname(e.target.value)}
       />
       <input
+      className={styles.nicknameinput}
         type="text"
-        placeholder="Room Code"
+        placeholder="Invite code"
         value={code}
         onChange={(e) => setCode(e.target.value.toUpperCase())}
         maxLength={6}
       />
-      <button onClick={handleJoin}>Join</button>
-      {error && <p style={{ color: 'red' }}>{error}</p>}
+      <button className={styles.buttoncreate} onClick={handleJoin}>Join</button>
+      
+      {error && <p className={styles.error}>{error}</p>}
+      </div></div>
     </main>
   );
 };
