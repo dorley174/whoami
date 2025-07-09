@@ -4,16 +4,17 @@ import styles from '@/css/rooms.module.css';
 
 const RoomsPage: React.FC = () => {
   return (
-    <main>
+    <>
       <div className={styles.buttons}>
+        <h1 style={{ color: '#8e0000' }}>Choose room option</h1>
         <Link className={styles.button} href="/create">
           Create Room
         </Link>
-        <Link className={styles.button} href="/join">
+        <Link className={styles.altbutton} href="/join">
           Join Game
         </Link>
       </div>
-    </main>
+    </>
   );
 };
 

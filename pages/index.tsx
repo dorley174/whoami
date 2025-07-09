@@ -4,7 +4,7 @@ import styles from '@/css/index.module.css';
 
 const HomePage: React.FC = () => {
   return (
-    <main>
+    <>
       <div className={styles.headertitle}>
         <div className={styles.headersubtitle}>
           <div className={styles.headerspan}>
@@ -24,7 +24,7 @@ const HomePage: React.FC = () => {
           </p>
         </div>
       </div>
-    </main>
+    </>
   );
 };
 

@@ -4,7 +4,7 @@ import styles from '@/css/rules.module.css';
 
 const RulesPage: React.FC = () => {
   return (
-    <main>
+    <>
       <p className={styles.rulestitle}>
         {' '}
         <strong>Who Am I?</strong> game rules
@@ -58,7 +58,7 @@ const RulesPage: React.FC = () => {
           </p>
         </section>
       </div>
-    </main>
+    </>
   );
 };
 

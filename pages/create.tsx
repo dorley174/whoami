@@ -56,7 +56,7 @@ const CreatePage: React.FC = () => {
   };
 
   return (
-    <main>
+    <>
       <BackButton />
       <div className={styles.wrapper}>
         <div className={styles.createmenu}>
@@ -102,7 +102,7 @@ const CreatePage: React.FC = () => {
           )}
         </div>
       </div>
-    </main>
+    </>
   );
 };
 
