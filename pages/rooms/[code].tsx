@@ -130,17 +130,17 @@ const RoomPage = () => {
                     <Image src={avatar} alt="avatar" className={styles.playerphoto} />
                     <p className={styles.playername}>{p.nickname}</p>
                   </div>
-                  {isCurrentUser && (
-                    <textarea
-                      placeholder="Your notes"
-                      className={styles.playernotes}
-                      rows={7}
-                      cols={40}
-                      value={textareas[p.id] || ''}
-                      onChange={(e) => handleTextareaChange(p.id, e.target.value)}
-                    />
-                  )}
                 </div>
+                {isCurrentUser && (
+                  <textarea
+                    placeholder="Your notes"
+                    className={styles.playernotes}
+                    rows={7}
+                    cols={40}
+                    value={textareas[p.id] || ''}
+                    onChange={(e) => handleTextareaChange(p.id, e.target.value)}
+                  />
+                )}
               </>
             );
           })}

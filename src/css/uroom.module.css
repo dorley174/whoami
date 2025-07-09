@@ -23,6 +23,8 @@
 
 .players {
   flex-grow: 7;
+  flex-direction: row;
+  flex-wrap: wrap;
 }
 
 .player {
@@ -30,7 +32,7 @@
   align-items: center;
   display: flex;
   flex-direction: column;
-  width: 18vw;
+  width: 260px;
 
   background-color: #7d8eff;
   border: 3px solid #2c304b;
@@ -51,6 +53,7 @@
 }
 
 .playernotes {
+  display: flex;
   text-align: center;
   justify-content: center;
   align-items: center;
@@ -77,7 +80,7 @@
 }
 
 .playerguess {
-  width: 17vw;
+  width: 200px;
   margin: 10px 0;
   text-align: center;
   background-color: #7d8eff;
@@ -88,15 +91,20 @@
 }
 
 .playername {
-  width: 17vw;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  width: 200px;
   margin: 10px 0;
   text-align: center;
   font-size: 1.3rem;
   font-weight: 600;
   color: #2c304b;
+
+  word-break: break-all;
 }
 
 .playerphoto {
-  width: 17vw;
-  height: 35vh;
+  width: 200px;
+  height: 250px;
 }
