@@ -112,8 +112,18 @@ const RoomPage = () => {
           <h2 style={{ color: '#8e0000', textAlign: 'center' }}>Spectators</h2>
           <ul style={{ color: '#8e0000', textAlign: 'center' }}>
             {room.spectators.map((s) => (
-              <li style={{ listStyleType: 'none', padding: 0, margin: 0 }} key={s.id}>
-                {s.nickname}
+              <li
+                style={{
+                  display: 'flex',
+                  justifyContent: 'center',
+                  alignItems: 'center',
+                  listStyleType: 'none',
+                  padding: 0,
+                  margin: 0,
+                }}
+                key={s.id}
+              >
+                <p style={{ fontSize: '1.3rem', fontWeight: '500' }}>{s.nickname}</p>
                 {s.id === userId && (
                   <button
                     disabled={loading}
@@ -131,28 +141,36 @@ const RoomPage = () => {
         <div className={styles.right}>
           <ul className={styles.players}>
             {room.players.map((p) => (
-              <div key={p.id} className={styles.playersarea}>
-                <div className={styles.player}>
-                  {p.id === userId ? (
-                    <p className={styles.playerguess}>???</p>
-                  ) : (
-                    <input
-                      type="text"
-                      placeholder="Guessed person"
-                      className={styles.playerguess}
-                      value={inputValues[p.id] || ''}
-                      onChange={(e) => handleInputChange(p.id, e.target.value)}
-                    />
-                  )}
-                  <Image src={avatar} alt="avatar" className={styles.playerphoto} />
-                  <p className={styles.playername}>{p.nickname}</p>
-                </div>
+              <div key={p.id} className={p.id === userId ? styles.you : styles.player}>
+                {p.id === userId ? (
+                  <p className={styles.playerguess}>???</p>
+                ) : (
+                  <input
+                    type="text"
+                    placeholder="Guessed person"
+                    className={styles.playerguess}
+                    value={inputValues[p.id] || ''}
+                    onChange={(e) => handleInputChange(p.id, e.target.value)}
+                  />
+                )}
+                <Image src={avatar} alt="avatar" className={styles.playerphoto} />
+                <p className={styles.playername}>{p.nickname}</p>
               </div>
             ))}
           </ul>
 
           {room.players.some((p) => p.id === userId) && (
-            <div style={{ display: 'flex', justifyContent: 'center', marginTop: '20px' }}>
+            <div
+              style={{
+                maxWidth: '100vw',
+                display: 'flex',
+                justifyContent: 'center',
+                width: 'fit-content',
+                margin: 'auto',
+                borderRadius: '33px',
+                border: '2px solid #2c304b',
+              }}
+            >
               <textarea
                 placeholder="Your notes"
                 className={styles.playernotes}
