@@ -26,34 +26,20 @@ const RoomPage = () => {
   const [textareas, setTextareas] = useState<{ [id: string]: string }>({});
   const [inputValues, setInputValues] = useState<{ [id: string]: string }>({});
 
+  // unique id
   useEffect(() => {
-    const saved = localStorage.getItem('inputValues');
-    if (saved) {
-      setInputValues(JSON.parse(saved));
+    const id = localStorage.getItem('userId');
+    if (id) setUserId(id);
+  }, []);
+
+  // nickname
+  useEffect(() => {
+    if (typeof window !== 'undefined') {
+      setNickname(localStorage.getItem('nickname'));
     }
   }, []);
 
-  useEffect(() => {
-    if (!code) return;
-
-    const fetchRoom = async () => {
-      try {
-        const res = await fetch(`/api/rooms/${code}`);
-        if (!res.ok) throw new Error('Failed to load room');
-        const data: RoomData = await res.json();
-        setRoom(data);
-      } catch (err) {
-        setError('Failed to load room data');
-      }
-    };
-
-    fetchRoom();
-
-    const interval = setInterval(fetchRoom, 5000);
-
-    return () => clearInterval(interval);
-  }, [code]);
-
+  // notes from textarea
   useEffect(() => {
     if (userId) {
       const saved = localStorage.getItem(`textarea_${userId}`);
@@ -70,27 +56,31 @@ const RoomPage = () => {
     }
   };
 
-  const handleInputChange = (id: string, value: string) => {
-    setInputValues((prev) => {
-      const updated = { ...prev, [id]: value };
-      localStorage.setItem('inputValues', JSON.stringify(updated));
-      return updated;
-    });
-  };
-
-  useEffect(() => {
-    const id = localStorage.getItem('userId');
-    if (id) setUserId(id);
-  }, []);
-
-  useEffect(() => {
-    if (typeof window !== 'undefined') {
-      setNickname(localStorage.getItem('nickname'));
-    }
-  }, []);
-
+  // input values
   useEffect(() => {
     if (!code) return;
+    const saved = localStorage.getItem(`inputValues_${code}`);
+    if (saved) {
+      try {
+        setInputValues(JSON.parse(saved));
+      } catch {}
+    }
+  }, [code]);
+
+  // inputValues in localStorage
+  useEffect(() => {
+    if (!code) return;
+    localStorage.setItem(`inputValues_${code}`, JSON.stringify(inputValues));
+  }, [inputValues, code]);
+
+  const handleInputChange = (id: string, value: string) => {
+    setInputValues((prev) => ({ ...prev, [id]: value }));
+  };
+
+  // auto update in 5 sec
+  useEffect(() => {
+    if (!code) return;
+
     const fetchRoom = async () => {
       try {
         const res = await fetch(`/api/rooms/${code}`);
@@ -101,7 +91,10 @@ const RoomPage = () => {
         setError('Failed to load room data');
       }
     };
+
     fetchRoom();
+    const interval = setInterval(fetchRoom, 5000);
+    return () => clearInterval(interval);
   }, [code]);
 
   const promote = async (nick: string) => {
@@ -133,6 +126,7 @@ const RoomPage = () => {
           <ul style={{ color: '#8e0000', textAlign: 'center' }}>
             {room.spectators.map((s) => (
               <li
+                key={s.id}
                 style={{
                   display: 'flex',
                   justifyContent: 'center',
@@ -141,7 +135,6 @@ const RoomPage = () => {
                   padding: 0,
                   margin: 0,
                 }}
-                key={s.id}
               >
                 <p style={{ fontSize: '1.3rem', fontWeight: '500' }}>{s.nickname}</p>
                 {s.id === userId && (
@@ -157,7 +150,9 @@ const RoomPage = () => {
             ))}
           </ul>
         </div>
+
         <hr className={styles.vline} />
+
         <div className={styles.right}>
           <ul className={styles.players}>
             {room.players.map((p) => (
