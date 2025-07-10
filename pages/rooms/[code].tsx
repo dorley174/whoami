@@ -98,7 +98,7 @@ const RoomPage = () => {
     };
 
     fetchRoom();
-    const interval = setInterval(fetchRoom, 5000);
+    const interval = setInterval(fetchRoom, 3000);
     return () => clearInterval(interval);
   }, [code, router]);
 
@@ -127,7 +127,7 @@ const RoomPage = () => {
     <>
       <div className={styles.actives}>
         <div className={styles.spectators}>
-          <h2 style={{ color: '#8e0000', textAlign: 'center' }}>Spectators</h2>
+          <h2 style={{ color: '#8e0000', textAlign: 'center' }}>Spectators:</h2>
           <ul style={{ color: '#8e0000', textAlign: 'center' }}>
             {room.spectators.map((s) => (
               <li
@@ -159,7 +159,7 @@ const RoomPage = () => {
         <hr className={styles.vline} />
 
         <div className={styles.right}>
-          <ul className={styles.players}>
+          <div className={styles.players}>
             {room.players.map((p) => (
               <div key={p.id} className={p.id === userId ? styles.you : styles.player}>
                 {p.id === userId ? (
@@ -177,7 +177,7 @@ const RoomPage = () => {
                 <p className={styles.playername}>{p.nickname}</p>
               </div>
             ))}
-          </ul>
+          </div>
 
           {room.players.some((p) => p.id === userId) && (
             <div
