@@ -14,9 +14,16 @@ const RulesPage: React.FC = () => {
           <p className={styles.ruledesc}>
             <strong>1. Guess</strong> some creature to each other{' '}
           </p>
-          <div className={styles.card}>
-            <p className={styles.cardinput}>Nicolas Cage</p>
-            <Image className={styles.cardimg} src="/person.jpg" alt="empty person" />
+          <div className={styles.card1}>
+            <input type="text" placeholder="Nicolas Cage" className={styles.playerguess} />
+            <Image
+              width={250}
+              height={300}
+              className={styles.cardimg}
+              src="/person.jpg"
+              alt="empty person"
+            />
+            <p>FEWD fun #1</p>
           </div>
         </section>
 
@@ -24,11 +31,11 @@ const RulesPage: React.FC = () => {
           <p className={styles.ruledesc}>
             <strong>2.</strong> Ask Y/N questions to guess <strong>your</strong> person
           </p>
-          <div className={styles.card}>
+          <div className={styles.card2}>
             <textarea
               rows={5}
               cols={40}
-              className={styles.cardinput}
+              className={styles.playernotes}
               placeholder="Am I an NPC in some game?"
             />
           </div>
@@ -40,11 +47,11 @@ const RulesPage: React.FC = () => {
             one more question.<br></br>If there is answer <strong>NO</strong>, then turn goes to the
             next player
           </p>
-          <div className={styles.card}>
+          <div className={styles.card2}>
             <textarea
               rows={5}
               cols={40}
-              className={styles.cardinput}
+              className={styles.playernotes}
               placeholder={
                 'Am I an NPC in some game? - YES\nIs this game popular? - YES\nIs this Steam game? - NO'
               }
