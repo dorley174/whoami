@@ -8,6 +8,8 @@ export default function App({ Component, pageProps }: AppProps) {
   return (
     <>
       <Head>
+        <title>Who Am I?</title>
+        <meta name="description" content="Popular board game now has new web version!" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <HeaderPage />
