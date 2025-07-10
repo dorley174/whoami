@@ -84,7 +84,12 @@ const RoomPage = () => {
     const fetchRoom = async () => {
       try {
         const res = await fetch(`/api/rooms/${code}`);
+        if (res.status === 404) {
+          router.replace('/404'); // 404 if wrong code
+          return;
+        }
         if (!res.ok) throw new Error('Failed to load room');
+
         const data: RoomData = await res.json();
         setRoom(data);
       } catch (err) {
@@ -95,7 +100,7 @@ const RoomPage = () => {
     fetchRoom();
     const interval = setInterval(fetchRoom, 5000);
     return () => clearInterval(interval);
-  }, [code]);
+  }, [code, router]);
 
   const promote = async (nick: string) => {
     if (!code) return;
