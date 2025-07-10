@@ -31,7 +31,7 @@ export function createRoom(nickname: string): string {
 export function joinRoom(code: string, nickname: string): boolean {
   const room = rooms[code];
   if (!room) return false;
-  if (Date.now() - room.createdAt > 12 * 60 * 60 * 1000) {
+  if (Date.now() - room.createdAt > 2 * 60 * 60 * 1000) {
     delete rooms[code];
     return false;
   }
