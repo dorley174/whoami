@@ -13,7 +13,12 @@ const FooterPage: React.FC = () => {
       </p>
       <p className={styles.l2}>Innopolis University, Summer 2025</p>
       <p className={styles.l3}>All rights reserved</p>
-      <p className={styles.l4}>Who Am I?</p>
+      <p className={styles.l4}>
+        {' '}
+        <Link className={styles.l11} href="https://github.com/dorley174/whoami">
+          Who Am I?
+        </Link>{' '}
+      </p>
     </footer>
   );
 };

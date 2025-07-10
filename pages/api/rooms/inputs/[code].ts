@@ -1,4 +1,3 @@
-// GET + POST /api/rooms/inputs/[code]
 import type { NextApiRequest, NextApiResponse } from 'next';
 import { getInputValues, setInputValues } from '@/lib/redis';
 

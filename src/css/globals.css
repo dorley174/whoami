@@ -3,7 +3,15 @@ html {
   text-decoration: none;
 }
 
-*,
+* {
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none; /* IE и Edge */
+}
+
+*::-webkit-scrollbar {
+  display: none; /* Chrome, Safari, Edge */
+}
+
 *::before,
 *::after {
   box-sizing: inherit;

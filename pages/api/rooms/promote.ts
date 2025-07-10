@@ -1,4 +1,3 @@
-// POST /api/rooms/promote
 import type { NextApiRequest, NextApiResponse } from 'next';
 import { promoteToPlayer, getRoom } from '@/lib/redis';
 
