@@ -46,6 +46,7 @@
 }
 
 .player {
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.2);
   justify-content: center;
   align-items: center;
   display: flex;
@@ -62,6 +63,7 @@
 }
 
 .you {
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.2);
   justify-content: center;
   align-items: center;
   display: flex;
@@ -81,6 +83,7 @@
 }
 
 .playernotes {
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.2);
   display: flex;
   text-align: center;
   justify-content: center;

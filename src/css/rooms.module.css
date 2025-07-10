@@ -9,6 +9,7 @@
 }
 
 .button {
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.2);
   text-decoration: none;
   margin: 30px;
   padding: 30px 60px;
@@ -29,6 +30,7 @@
 }
 
 .altbutton {
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.2);
   text-decoration: none;
   margin: 30px;
   padding: 30px 60px;
